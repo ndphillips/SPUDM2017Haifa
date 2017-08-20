@@ -302,6 +302,19 @@ specificity :spec   0.79   0.76
 pars: algorithm = 'ifan', goal = 'wacc', goal.chase = 'bacc', sens.w = 0.5
 ```
 
+
+
+
+---
+## Plot individual cue accuracies
+
+
+```{r, fig.align = 'center', echo = TRUE, out.width = "50%", fig.width = 6, fig.height = 6}
+plot(heart.fft, what = "cues")
+```
+
+
+
 ---
 ## Print a tree "in words"
 
@@ -323,14 +336,6 @@ inwords(heart.fft)
 |     ca: |number of major vessels colored by flourosopy     |0, 1, 2, 3    |
 
 
-
-
-
----
-
-```{r, fig.align = 'center', echo = TRUE, out.width = "60%"}
-plot(heart.fft, what = "cues")
-```
 
 
 ---
@@ -416,27 +421,27 @@ plot(titanic.fft)
 
 
 
----
+<!-- --- -->
 
-```{r out.width = "60%", echo = FALSE, message = FALSE, warning = FALSE}
-set.seed(100)
-forestfires$area <- forestfires$area > 0
-forest.fft <- FFTrees(area ~., data = forestfires, main = "Forest Fires", decision.labels = c("None", "Fire"), train.p = .5)
-plot(forest.fft, "train")
-```
+<!-- ```{r out.width = "60%", echo = FALSE, message = FALSE, warning = FALSE} -->
+<!-- set.seed(100) -->
+<!-- forestfires$area <- forestfires$area > 0 -->
+<!-- forest.fft <- FFTrees(area ~., data = forestfires, main = "Forest Fires", decision.labels = c("None", "Fire"), train.p = .5) -->
+<!-- plot(forest.fft, "train") -->
+<!-- ``` -->
 
----
+<!-- --- -->
 
-```{r out.width = "60%", echo = FALSE}
-plot(forest.fft, "test")
-```
+<!-- ```{r out.width = "60%", echo = FALSE} -->
+<!-- plot(forest.fft, "test") -->
+<!-- ``` -->
 
 
----
+<!-- --- -->
 
-```{r out.width = "60%", echo = FALSE}
-plot(forest.fft, what = "cues")
-```
+<!-- ```{r out.width = "60%", echo = FALSE} -->
+<!-- plot(forest.fft, what = "cues") -->
+<!-- ``` -->
 
 
 
