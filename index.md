@@ -334,8 +334,6 @@ plot(heart.fft, data = "test", tree = 7)   # Testing data, tree 7
 
 - Choose a tree building algorithm.
     - Max, zig-zag, ifan, dfan
-- Give differential weight to sensitivity (avoiding misses) and specificity (avoiding false-alarms)
-- Incorporate cue costs in evaluating and/or building trees.
 - Specify a tree directly 'in words'
 
 
@@ -345,6 +343,9 @@ my.tree =
  If sex = {m}, predict TRUE.
  If ca > 1, predict TRUE, otherwise, FALSE')
 ```
+
+- Give differential weight to sensitivity (avoiding misses) and specificity (avoiding false-alarms)
+- Incorporate cue costs in evaluating and/or building trees.
 
 - Create a 'forest' of FFTs
 
