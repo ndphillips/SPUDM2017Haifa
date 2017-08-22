@@ -151,10 +151,6 @@ Green & Mehr (1997) "What alters physicians' decisions to admit to the coronary 
 
 *If you don't like things for free (R), you can pay IBM SPSS $680 / year to make standard decision trees.*
 
-
-
-Martignon, Katsikopoulos & Woike (2008)
-
 ---&twocol
 ## FFTrees
 
@@ -336,6 +332,8 @@ plot(heart.fft, data = "test", tree = 7)   # Testing data, tree 7
 
 ***=left
 
+- Choose a tree building algorithm.
+    - Max, zig-zag, ifan, dfan
 - Give differential weight to sensitivity (avoiding misses) and specificity (avoiding false-alarms)
 - Incorporate cue costs in evaluating and/or building trees.
 - Specify a tree directly 'in words'
@@ -386,6 +384,7 @@ my.tree =
 
 - 10 datasets from the UCI Machine Learning Database.
 - 50% Training, 50% Testing
+- Created FFTs with the 'ifan' algorithm (Phillips et al. 2017)
 - FFTrees vs rpart, regression, random forests...
 - Criterion: Balanced accuracy
     - `mean(sensitivity, specificity)`
@@ -516,12 +515,12 @@ my.tree =
 <!-- plot(my.heart.fft, stats = TRUE) -->
 <!-- ``` -->
 
-
 ---
+## How I learned to stop worrying and love heuristics
 
-<img src="figure/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="90%" style="display: block; margin: auto;" />
 
 
+<img src="images/strangelove.jpeg" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="70%" style="display: block; margin: auto;" />
 
 
 ---
@@ -529,13 +528,11 @@ my.tree =
 <img src="figure/unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="90%" style="display: block; margin: auto;" />
 
 
+
+
 ---
 
 <img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="90%" style="display: block; margin: auto;" />
-
-
-
-
 
 
 ---
@@ -544,9 +541,18 @@ my.tree =
 
 
 
+
+
+
 ---
 
 <img src="figure/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="90%" style="display: block; margin: auto;" />
+
+
+
+---
+
+<img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="90%" style="display: block; margin: auto;" />
 
 
 
@@ -561,14 +567,14 @@ my.tree =
 
 FFTrees: A toolbox to create, visualize and evaluate fast-and-frugal decision trees. (2017). *Judgment and Decision Making*, 12(4), 344-368.
 
-<img src="images/manuscriptss.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="90%" style="display: block; margin: auto;" />
+<img src="images/manuscriptss.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="90%" style="display: block; margin: auto;" />
 
 
 ***=right
 
 
 
-<img src="images/fftreescoauthors.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="100%" style="display: block; margin: auto;" />
+<img src="images/fftreescoauthors.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -576,7 +582,7 @@ FFTrees: A toolbox to create, visualize and evaluate fast-and-frugal decision tr
 --- .class #id 
 
 
-<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="30%" style="display: block; margin: auto;" />
+<img src="images/FFTrees_Logo.jpg" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="30%" style="display: block; margin: auto;" />
 
 
 
@@ -605,7 +611,7 @@ FFTrees_guide()               # Open the main package guide
 
 - Many cues, weak validity, ind errors
 
-<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="100%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" width="100%" style="display: block; margin: auto;" />
 
 
 ***=right
@@ -614,7 +620,7 @@ FFTrees_guide()               # Open the main package guide
 
 - Few cues with high validity, dep errors.
 
-<img src="figure/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" width="100%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -623,7 +629,7 @@ FFTrees_guide()               # Open the main package guide
 
 - As calculated by `randomForest`
 
-<img src="figure/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="80%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" width="80%" style="display: block; margin: auto;" />
 
 
 
@@ -643,32 +649,32 @@ FFTrees_guide()               # Open the main package guide
 
 ***=right
 
-<img src="figure/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" width="80%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="80%" style="display: block; margin: auto;" />
 
 
-<img src="images/roc.jpg" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="70%" style="display: block; margin: auto;" />
-
-
-
+<img src="images/roc.jpg" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" width="70%" style="display: block; margin: auto;" />
 
 
 
----
-### How accurate can FFTs be?
-
-
-
-<img src="figure/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" width="90%" style="display: block; margin: auto;" />
 
 
 
 ---
 ### How accurate can FFTs be?
-
 
 
 
 <img src="figure/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="90%" style="display: block; margin: auto;" />
+
+
+
+---
+### How accurate can FFTs be?
+
+
+
+
+<img src="figure/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" width="90%" style="display: block; margin: auto;" />
 
 
 
@@ -700,7 +706,7 @@ library("FFTrees")
 ***=right
 
 
-<img src="figure/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" width="80%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" width="80%" style="display: block; margin: auto;" />
 
 
 
@@ -713,7 +719,7 @@ heart.fff <- FFForest(formula = diagnosis ~., data = heartdisease)
 ```
 
 
-<img src="figure/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" width="90%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" width="90%" style="display: block; margin: auto;" />
 
 
 

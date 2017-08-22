@@ -205,10 +205,6 @@ knitr::include_graphics(c("images/spssdecisiontrees_ss.png"))
 
 *If you don't like things for free (R), you can pay IBM SPSS $680 / year to make standard decision trees.*
 
-
-
-Martignon, Katsikopoulos & Woike (2008)
-
 ---&twocol
 ## FFTrees
 
@@ -371,6 +367,8 @@ plot(heart.fft, data = "test", tree = 7)   # Testing data, tree 7
 
 ***=left
 
+- Choose a tree building algorithm.
+    - Max, zig-zag, ifan, dfan
 - Give differential weight to sensitivity (avoiding misses) and specificity (avoiding false-alarms)
 - Incorporate cue costs in evaluating and/or building trees.
 - Specify a tree directly 'in words'
@@ -426,6 +424,7 @@ knitr::include_graphics(c("images/shinyfftrees_ss.png"))
 
 - 10 datasets from the UCI Machine Learning Database.
 - 50% Training, 50% Testing
+- Created FFTs with the 'ifan' algorithm (Phillips et al. 2017)
 - FFTrees vs rpart, regression, random forests...
 - Criterion: Balanced accuracy
     - `mean(sensitivity, specificity)`
@@ -678,6 +677,15 @@ knitr::include_graphics(c("images/MLR_Simulation_Trees.jpg"))
 <!-- plot(my.heart.fft, stats = TRUE) -->
 <!-- ``` -->
 
+---
+## How I learned to stop worrying and love heuristics
+
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "70%", fig.align='center', message = FALSE, echo = FALSE}
+ knitr::include_graphics(c("images/strangelove.jpeg"))
+```
+
 
 ---
 
@@ -689,7 +697,7 @@ fast <- function(x) {line.fun(alpha = .1, x = x, x1 = 0, y1 = 0, x2 = 100, y2 = 
 
 
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "What I used to think", bty = "n")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "What I used to think", bty = "n")
 grid()
 
 
@@ -709,7 +717,7 @@ fast <- function(x) {line.fun(alpha = .1, x = x, x1 = 0, y1 = 0, x2 = 100, y2 = 
 
 
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "What I used to think", bty = "n")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "What I used to think", bty = "n")
 grid()
 
 curve(slow, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE,lwd= 5, 
@@ -744,7 +752,7 @@ fast <- function(x) {line.fun(alpha = .1, x = x, x1 = 0, y1 = 0, x2 = 100, y2 = 
 
 
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "What I think now", bty = "n")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "What I think now", bty = "n")
 grid()
 
 curve(medium, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE,lwd= 5, 
@@ -778,7 +786,7 @@ text(30, 75, "Accuracy", cex = 1, font = 3)
 ```{r, echo = FALSE, out.width = "90%", fig.width = 7, fig.height = 5}
 
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "What I think now", bty = "n")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "What I think now", bty = "n")
 grid()
 
 curve(medium, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE,lwd= 5, 
@@ -817,7 +825,7 @@ text(30, 25, "Cost", cex = 1, font = 3, srt = 30)
 ```{r, echo = FALSE, out.width = "90%", fig.width = 7, fig.height = 5}
 
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "What I think now", bty = "n")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "What I think now", bty = "n")
 grid()
 
 curve(medium, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE,lwd= 5, 
@@ -1079,7 +1087,7 @@ knitr::include_graphics(c("images/roc.jpg"))
 
 ```{r, echo = FALSE, out.width = "90%", fig.width = 10, fig.height = 6}
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "Trade-off Between Complexity and Accuracy")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "Trade-off Between Complexity and Accuracy")
 grid()
 
 curve(slow, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE, lwd = 2)
@@ -1096,7 +1104,7 @@ curve(slow, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE, 
 
 ```{r, echo = FALSE, out.width = "90%", fig.width = 10, fig.height = 6}
 plot(1, xlim = c(0, 100), ylim = c(0, 100), type = "n", 
-     xlab = "Complexity\n1 - Simplicity", ylab = "Accuracy", main = "Trade-off Between Complexity and Accuracy")
+     xlab = "Complexity\n1 - Simplicity", ylab = "", main = "Trade-off Between Complexity and Accuracy")
 grid()
 curve(slow, from = 0, to = 100, ylim = c(0, 100), xlim = c(0, 100), add = TRUE,lwd= 2)
 
