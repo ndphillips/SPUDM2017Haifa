@@ -1,6 +1,6 @@
 ---
 title       : FFTrees
-subtitle    : An R package to create, visualize, and evaluate fast-and-frugal decision trees.......Or, how I learned to stop worrying and love heuristics.
+subtitle    : An R package to create and profit from fast-and-frugal decision trees.......Or, how I learned to stop worrying and love heuristics.
 author      : Nathaniel Phillips, Economic Psychology, University of Basel, Switzerland
 job         : SPUDM 2017, Haifa, Israel
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -135,11 +135,12 @@ knitr::include_graphics(c("images/GreenMehrFFT.png"))
 Green & Mehr (1997) "What alters physicians' decisions to admit to the coronary care unit?"
 
 
---- &twocol
+---&twocol
 
+***=left
 ## Fast-and-Frugal Decision Tree (FFT)
 
-- An FFT is a decision tree with exactly two branches from each node, where one, or both, of the branches are exit branches (Martignon et al., 2008)
+- An FFT is a decision tree with exactly two branches from each node, where one (or in the case of the final node, both) of the branches are exit branches (Martignon et al., 2008)
 
 
 <!-- #### Descriptive Uses -->
@@ -154,9 +155,19 @@ Green & Mehr (1997) "What alters physicians' decisions to admit to the coronary 
 <!-- - Bank failure (Neth et al., 2014) -->
 <!-- - Depression diagnosis (Jenny et al., 2013) -->
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "85%", fig.align='center', message = FALSE}
-knitr::include_graphics(c("images/complexvsimple.png"))
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
+knitr::include_graphics(c("images/martignon2008_ss.png"))
 ```
+
+
+
+***=right
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "80%", fig.align='center', message = FALSE, echo = FALSE}
+knitr::include_graphics(c("images/heartfft.png"))
+```
+
 
 
 ---
@@ -178,7 +189,7 @@ knitr::include_graphics(c("images/FFTexamples.png"))
 
 | | Algorithms|Software |
 |------:|----:|:-----|:----|
-|     Standard Decision Trees|  CART, CHAID|SPSS, Excel, R, Matlab, ...     |
+|     Standard Decision Trees|  CART, C4.5, CHAID|SPSS, Excel, R, Matlab, ...     |
 |     Fast-and-Frugal Trees (FFTs)|    Max, Zig-zag (Martignon et al., 2003; 2008)|?     |
 
 - *Missing*: An easy to use toolbox that creates and visualizes FFTs based on data.
@@ -194,9 +205,6 @@ knitr::include_graphics(c("images/spssdecisiontrees_ss.png"))
 
 *If you don't like things for free (R), you can pay IBM SPSS $680 / year to make standard decision trees.*
 
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center', message = FALSE, echo = FALSE}
-knitr::include_graphics(c("images/martignon2008_ss.png"))
-```
 
 
 Martignon, Katsikopoulos & Woike (2008)
@@ -206,24 +214,9 @@ Martignon, Katsikopoulos & Woike (2008)
 
 ***=left
 
-- A package to create, visualize, and evaluate fast-and-frugal decision trees.
-- Minimal programming, extensive examples and guides, informative visualizations. 
-
-```{r, eval = FALSE}
-# 3 Steps to getting started
-
-install.packages("FFTrees") # Install
-library("FFTrees")          # Load 
-FFTrees_guide()             # Open guide
-
-    0      
-   / \     
-F   0  
-     / \   
-    F   T  
- FFTrees v1.3.3
-```
-
+- A toolbox to create fast-and-frugal decision trees (FFTs).
+- FFTs that either Describe decision processes 'in the lab' or Prescribe decision strategies 'in the field'.
+- Minimal to no programming, extensive examples and guides. 
 
 
 ***=right
@@ -372,6 +365,53 @@ plot(heart.fft, data = "test", tree = 7)   # Testing data, tree 7
 
 
 
+---&twocol
+
+## Additional features
+
+***=left
+
+- Give differential weight to sensitivity (avoiding misses) and specificity (avoiding false-alarms)
+- Incorporate cue costs in evaluating and/or building trees.
+- Specify a tree directly 'in words'
+
+```{r, eval = FALSE}
+my.tree = 
+'If age > 50, predict FALSE.
+ If sex = {m}, predict TRUE.
+ If ca > 1, predict TRUE, otherwise, FALSE')
+```
+
+- Create a 'forest' of FFTs
+
+***=right
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center', message = FALSE, echo = FALSE}
+ knitr::include_graphics(c("images/medicaltestcost.jpg"))
+```
+
+
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "90%", fig.align='center', message = FALSE, echo = FALSE}
+ knitr::include_graphics(c("images/heartfff.png"))
+```
+
+
+
+
+---
+## ShinyFFTrees
+
+- A point-and click (no programming), web-based version of FFTrees with around 90% of the funcionality of FFTrees
+- Link: http://econpsychbasel.shinyapps.io/ShinyFFTrees/
+
+```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center'}
+knitr::include_graphics(c("images/shinyfftrees_ss.png"))
+```
+
+
+
 ---
 
 <q>How well can simple FFTs compete with classical rational models and cutting-edge machine learning algorithms?</q>
@@ -399,25 +439,25 @@ knitr::include_graphics(c("images/datacollage.png"))
 
 
 
----
-```{r out.width = "60%", echo = FALSE}
-plot(mushrooms.fft)
-```
+<!-- --- -->
+<!-- ```{r out.width = "60%", echo = FALSE} -->
+<!-- plot(mushrooms.fft) -->
+<!-- ``` -->
 
 
 
----
-```{r out.width = "60%", echo = FALSE}
-breast.fft <- FFTrees(diagnosis ~., data = breastcancer, main = "Breast Cancer", decision.labels = c("Healthy", "Cancer"))
-plot(breast.fft)
-```
+<!-- --- -->
+<!-- ```{r out.width = "60%", echo = FALSE} -->
+<!-- breast.fft <- FFTrees(diagnosis ~., data = breastcancer, main = "Breast Cancer", decision.labels = c("Healthy", "Cancer")) -->
+<!-- plot(breast.fft) -->
+<!-- ``` -->
 
 
----
-```{r out.width = "60%", echo = FALSE}
-titanic.fft <- FFTrees(survived ~., data = titanic, main = "Titanic", decision.labels = c("Died", "Survived"))
-plot(titanic.fft)
-```
+<!-- --- -->
+<!-- ```{r out.width = "60%", echo = FALSE} -->
+<!-- titanic.fft <- FFTrees(survived ~., data = titanic, main = "Titanic", decision.labels = c("Died", "Survived")) -->
+<!-- plot(titanic.fft) -->
+<!-- ``` -->
 
 
 
@@ -637,20 +677,6 @@ knitr::include_graphics(c("images/MLR_Simulation_Trees.jpg"))
 <!-- ```{r, out.width = "100%", echo = FALSE} -->
 <!-- plot(my.heart.fft, stats = TRUE) -->
 <!-- ``` -->
-
-
-
----
-## ShinyFFTrees
-
-- A point-and click (no programming), web-based version of FFTrees with around 90% of the funcionality of FFTrees
-- Demo: http://econpsychbasel.shinyapps.io/ShinyFFTrees/
-
-```{r , fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align='center'}
-knitr::include_graphics(c("images/shinyfftrees_ss.png"))
-```
-
-
 
 
 ---
